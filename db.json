@@ -1,0 +1,51 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "asdasd",
+      "author": "dasdasd"
+    },
+    [
+      "Sports"
+    ],
+    [
+      "Sports",
+      "Administrative"
+    ],
+    [
+      "Sports",
+      "Administrative",
+      "Academic"
+    ],
+    [
+      "Sports",
+      "Administrative",
+      "Academic",
+      "Culture"
+    ],
+    [
+      "Administrative",
+      "Academic",
+      "Culture"
+    ],
+    [
+      "Academic",
+      "Culture"
+    ]
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

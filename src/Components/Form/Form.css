@@ -1,0 +1,48 @@
+.Form {
+  text-align: center;
+}
+
+.Header {
+  background-color: #FC8472;
+  width: 100%;
+  height: 13vmin;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 1vmin;
+}
+
+.Content {
+  padding: 5vmin  ;
+}
+
+.Wrapper {
+  margin: 0.5vmin;
+
+}
+
+.Wrapper-I {
+  width: 100%;
+}
+
+#datetime-local-I {
+  margin: 1vmin;
+  width: auto;
+}
+
+#datetime-local-II {
+  margin: 1vmin;
+  width: auto;
+
+}
+
+.MuiFormControl-root-5 {
+  width : auto !important;
+}
+
+.MuiFormControl-fullWidth-8 {
+  width : 90% !important;
+}

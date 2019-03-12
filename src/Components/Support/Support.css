@@ -1,0 +1,96 @@
+.MainSuppContainer {
+    height: 500vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 200;
+    transform: translateX(150%);
+    background: white;
+}
+.Toggle_Right {
+    animation: ToggleRight 400ms forwards;
+    left: 0;
+}
+.Toggle_Left {
+    animation: ToggleLeft 400ms forwards;
+    right: 0;
+}
+
+@keyframes ToggleLeft {
+    from { transform: translateX(150%) }
+    to { transform: translateX(0) }
+}
+@keyframes ToggleRight {
+    from { transform: translateX(0) }
+    to { transform: translateX(150%) }
+}
+
+
+
+
+.Square {
+
+    height: 100px;
+    background: #959196;
+    margin: 0;
+    padding: .5em;
+    position: relative;
+    box-shadow: 0 2px 10px black;
+    color: black;
+
+}
+.MainGrid {
+    margin-top: 3em;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 1em;
+    width: 100%;
+}
+
+.Padding {
+    padding: 1em;
+}
+
+.MidRate {
+    grid-column: 1 / 3;
+}
+.HighRate {
+    grid-column: 1 / 4;
+}
+
+.Rate {
+    position: absolute;
+    right: 8%;
+    top: 5%;
+}
+.RateHigh, .RateMid {
+    position: absolute;
+    right: 2%;
+    top: 5%;
+}
+.Flex {
+    position: absolute;
+    bottom: 5%;
+}
+.Subtitle {
+    font-size: 1.2em;
+}
+.Location {
+    font-size: .8em;
+}
+
+.BackToMap {
+    padding: .5em;
+    background: steelblue;
+    box-shadow: 0 2px 10px black;
+    color: white;
+    position: absolute;
+    top: .5%;
+    right: 5%;
+    transition: ease-in-out 100ms;
+}
+.BackToMap:active {
+    background: #456eb4;
+}

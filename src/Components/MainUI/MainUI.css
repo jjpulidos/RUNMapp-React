@@ -1,0 +1,98 @@
+.MainUIContainer {
+    position: absolute;
+    height: 100vh;
+    z-index: 50;
+    background: gray;
+}
+.HideElement {
+    display: none;
+}
+.Hide {
+    overflow: hidden;
+}
+
+.MenuWrapperContainer {
+    width: 100%;
+    height: auto;
+    background: tomato;
+    display: flex;
+    justify-content: center;
+}
+
+.MenuWrapper {
+    height: 8vh;
+    width: 25vw;
+    position: fixed;
+    bottom: 0;
+    background: tomato;
+    /*border-radius: 100% 100% 0 0;*/
+    box-shadow: 0 2px 10px black;
+}
+
+.MenuWrapper p {
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: .8em;
+    font-size: 100%;
+}
+
+.MenuContainer {
+   display: flex;
+    justify-content: space-around;
+}
+
+.CategoriesMenuContainer {
+    position: absolute;
+    padding: 1em;
+    display: grid;
+    z-index: 100;
+}
+
+
+.CategoriesMenuContainer2 {
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    width: 75%;
+    display: grid;
+    top: 30%;
+    grid-template-columns: repeat(4, 1fr);
+}
+.MenuIcon {
+    width: 10%;
+    position: relative;
+    z-index: 10;
+}
+
+.CategoriesMenu {
+
+}
+
+.Icon {
+    width: 45%;
+    border-radius: 50%;
+    transform: translateX(-1500%);
+}
+
+.ToggleLeft {
+    animation: toggleLeft 500ms forwards;
+}
+.ToggleRight {
+    animation: toggleRight 500ms forwards;
+}
+
+@keyframes toggleRight {
+    from {transform: translateX(-1500%);}
+    to {transform: translateX(0);}
+}
+
+@keyframes toggleLeft {
+    from {transform: translateX(0);}
+    to {transform: translateX(-1500%);}
+}
+
+@keyframes toggleUp {
+    from {transform: translateY(150%)}
+    to {transform: translateY(0)}
+}
