@@ -31,18 +31,13 @@ class Map extends Component {
 
         store.subscribe(() => {
 
-            if (store.getState().StylesState.renderMapData){
-              console.log('se han añadido builidings')
-              this.setState({
-                  ...this.state,
-                  arrayBuildingsSelected: store.getState().buildings
-              })
-              store.dispatch({
-                type: 'RESET-MAP-DATA-RENDER'
-              })
+          console.log('se han añadido builidings')
+          this.setState({
+              ...this.state,
+              arrayBuildingsSelected: store.getState().buildings
+          })
 
-              this.setGeoJason()
-            }
+          this.setGeoJason()
 
 
 
@@ -55,7 +50,7 @@ class Map extends Component {
 
 
     setGeoJason = () => {
-      console.log('Actualizando el geojson')
+      // console.log('Actualizando el geojson')
       this.state.arrayBuildingsSelected.map((building, i) => {
           this.state.geojson.features.push({
               type: 'Feature',
@@ -68,10 +63,10 @@ class Map extends Component {
                   _id : building._id
               }
           })
-          console.log(i);
+          // console.log(i);
           if (i === this.state.arrayBuildingsSelected.length - 1) {
               this.setState({ ...this.state, _render: true })
-              console.log('Iteracion final')
+              // console.log('Iteracion final')
           }
       });
     }
@@ -136,15 +131,14 @@ class Map extends Component {
 
 
     markerRequest = (e) => {
-        const currentId = e.target.getAttribute('id');
-        console.log(currentId)
+
+        console.log(e.target.getAttribute('id'))
+
         store.dispatch({
-            type: 'SHOW-EVENTS-MAP',
-            id: currentId
-        })
-        store.dispatch({
-            type: 'CAN-TOGGLE-ON',
-            id: currentId
+          type: 'SHOW-EVENTS-MAP',
+          callback: {
+            id: e.target.getAttribute('id')
+          }
         })
     }
 

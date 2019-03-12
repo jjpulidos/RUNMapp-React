@@ -24,10 +24,14 @@ function reducer(state, action) {
 
 
 
-      case 'TOGGLE-RIGHT': return { ...state, toggle_Sides: false } ; break;
+      case 'TOGGLE-RIGHT': {
+        console.log('Se hizo toggle right')
+        return { ...state, toggle_Sides: false, events: []}
+      } ; break;
 
       case 'PUSH-BUILD': return {
         ...state,
+        data: action._data,
         buildings: action._data.buildings,
         events: action._data.events,
         StylesState: {
@@ -38,18 +42,14 @@ function reducer(state, action) {
 
       case 'SHOW-EVENTS-MAP': {
 
-        let results = []
-        results = state.events.filter(x => x.location === action.id);
+        const current_data = state.data.events.filter(x => x.location === action.callback.id);
 
         return {
           ...state,
-          toggleSide:'Toggle_Left',
-          overflow: '',
-          toggle: 'HideElement',
-          events: results
+          toggle_Sides: true,
+          events: current_data
         }
       }
-      case 'RESET-MAP-DATA-RENDER': return { ...state, StylesState: {...state.StylesState, renderMapData: false}}
       // case 'CAN-TOGGLE-ON': return {...state, canToggle: true}
       // case 'CAN-TOGGLE-OFF': return {...state, canToggle: true}
 

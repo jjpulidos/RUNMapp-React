@@ -14,13 +14,6 @@ const initialState = {
     toggle_UpDown: false,
     toggle_Sides: false,
 
-    StylesState: {
-
-
-      overflowHide: false,
-
-      renderMapData: false
-    },
 
     renderOption: undefined,
 

@@ -31,7 +31,6 @@ class MainMenu extends Component {
 
         store.subscribe(() => {
           let _state = store.getState()
-          console.log(_state)
           let toggleDirection = ''
 
           if (_state.toggle_UpDown) {

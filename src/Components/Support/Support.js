@@ -33,7 +33,6 @@ class Support extends Component {
           let toggleSideDirection = ''
 
           if (_state.toggle_Sides === true) {
-            console.log('entra aca')
             toggleSideDirection = 'Toggle_Left'
           }
 
@@ -43,7 +42,7 @@ class Support extends Component {
               data: store.getState().events,
               toggle_Side: toggleSideDirection
           })
-
+          setTimeout(() => console.log('Support Data: ', this.state.data), 1000)
         })
     }
 
