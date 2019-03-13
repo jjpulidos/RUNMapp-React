@@ -17,7 +17,7 @@ function reducer(state, action) {
       case 'TOGGLE-DOWN': return { ...state, toggle_UpDown: false }; break;
 
 
-      case 'TOGGLE-LEFT': return { ...state, toggle_Sides: true, overflow: '' } ; break;
+      case 'TOGGLE-LEFT': return { ...state, toggle_Sides: true, overflow: 'ExtendedScreen' } ; break;
       // case 'TOGGLE-LEFT-CLOSE': return { ...state, toggleSide: 'Toggle_Left', overflow: '', toggle: 'HideElement', canToggle: false} ; break;
       // case 'TOGGLE-LEFT-POPULAR': return { ...state, toggleSide: 'Toggle_Left', overflow: '', toggle: 'HideElement', canToggle: false} ; break;
       // case 'TOGGLE-LEFT-SERVICE': return { ...state, toggleSide: 'Toggle_Left', overflow: '', toggle: 'HideElement', canToggle: false} ; break;
@@ -26,7 +26,7 @@ function reducer(state, action) {
 
       case 'TOGGLE-RIGHT': {
         console.log('Se hizo toggle right')
-        return { ...state, toggle_Sides: false, events: []}
+        return { ...state, toggle_Sides: false, events: [], overflow: 'MainUIContainer'}
       } ; break;
 
       case 'PUSH-BUILD': return {
@@ -53,8 +53,11 @@ function reducer(state, action) {
 
 
       case 'CREATE-TOGGLE-RIGHT': {
-        console.log('Create to right')
         return {...state, create_toggle_Sides: true}
+      }
+
+      case 'CREATE-TOGGLE-LEFT': {
+        return {...state, create_toggle_Sides: false}
       }
 
       default: return state;

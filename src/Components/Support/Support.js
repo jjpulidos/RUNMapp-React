@@ -29,19 +29,17 @@ class Support extends Component {
         }
 
         store.subscribe(() => {
-          let _state = store.getState()
-          let toggleSideDirection = ''
 
-          if (_state.toggle_Sides === true) {
-            toggleSideDirection = 'Toggle_Left'
+          if (store.getState().toggle_Sides === true) {
+            this.setState({
+                ...this.state,
+                data: store.getState().events,
+                toggle_Side: 'Toggle_Left'
+            })
           }
 
 
-          this.setState({
-              ...this.state,
-              data: store.getState().events,
-              toggle_Side: toggleSideDirection
-          })
+
           // setTimeout(() => console.log('Support Data: ', this.state.data), 1000)
         })
     }
@@ -96,12 +94,13 @@ class Support extends Component {
     // }
 
     backToMap = () => {
-        this.setState({
-          toggle_Side: 'Toggle_Right'
-        })
+      this.setState({
+        toggle_Side: 'Toggle_Right'
+      })
         store.dispatch({
           type: 'TOGGLE-RIGHT'
         })
+
     }
 
 
@@ -113,7 +112,7 @@ class Support extends Component {
                 <div className='Padding'>
                     <div className="MainGrid">
 
-                        <div onClick={this.backToMap} className='BackToMap'>Back to Map</div>
+                        <div onClick={this.backToMap} className='BackToMap'>Volver al Mapa</div>
                         {
 
                             this.state.data.map(x => {

@@ -34,15 +34,11 @@ class MainMenu extends Component {
           let toggleDirection = ''
 
           if (_state.toggle_UpDown) {
-            toggleDirection = 'ToggleUp'
-          }else {
-            toggleDirection = 'ToggleDown'
-          }
-
             this.setState({
                 ...this.state,
-                toggle: toggleDirection
+                toggle: 'ToggleUp'
             })
+          }
         })
     }
 
@@ -52,34 +48,23 @@ class MainMenu extends Component {
         store.dispatch({
           type: 'TOGGLE-DOWN'
         })
+        this.setState({
+            ...this.state,
+            toggle: 'ToggleDown'
+        })
     }
 
-    toggleSide = (e) => {
-        if (e.target.getAttribute('id') === 'support'){
-          store.dispatch({
-              type: 'TOGGLE-LEFT'
-          })
-        }else if (e.target.getAttribute('id') === 'create'){
-          store.dispatch({
-            type: 'CREATE-TOGGLE-RIGHT'
-          })
-        }
+    toggleSide = () => {
+        store.dispatch({
+            type: 'TOGGLE-LEFT'
+        })
+
     }
-    // toggleSideClose = () => {
-    //     store.dispatch({
-    //         type: 'TOGGLE-LEFT-CLOSE'
-    //     })
-    // }
-    // toggleSidePopular = () => {
-    //     store.dispatch({
-    //         type: 'TOGGLE-LEFT-POPULAR'
-    //     })
-    // }
-    // toggleSideService = () => {
-    //     store.dispatch({
-    //         type: 'TOGGLE-LEFT-SERVICE'
-    //     })
-    // }
+    createToggleSide = () => {
+      store.dispatch({
+          type: 'CREATE-TOGGLE-RIGHT'
+      })
+    }
 
     render() {
 
@@ -98,7 +83,7 @@ class MainMenu extends Component {
                 </ul>
 
                 <div className='CreateSupportContainer'>
-                    <div className='NewEventContainer' id='create'  onClick={this.toggleSide}>
+                    <div className='NewEventContainer' id='create'  onClick={this.createToggleSide}>
                         <img className='NewEvent_Icon' src={add} alt="add_icon"/>
                         <h3 >Crear/Editar Evento</h3>
                     </div>

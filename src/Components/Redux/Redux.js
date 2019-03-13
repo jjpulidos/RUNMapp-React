@@ -7,9 +7,8 @@ const initialState = {
     data: [],
     toggle: '',
     toggleSide: '',
-    overflow: '',
-    toggle2: '',
-    canToggle: false,
+    overflow: 'MainUIContainer',
+
 
     toggle_UpDown: false,
     toggle_Sides: false,

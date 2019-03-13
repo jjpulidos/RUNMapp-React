@@ -10,6 +10,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios'
 import store from '../Redux/Redux'
+import checked from './checked.svg'
 
 
 // import { DatetimeInput } from 'react-datetime-inputs'
@@ -117,7 +118,12 @@ const locations = [
 
 var auxOptions = eventCategories;
 
-var createToggle = ''
+var createToggle = '';
+
+var id = ''
+
+
+
 
 class Form extends Component {
 
@@ -131,16 +137,22 @@ class Form extends Component {
       location: '',
       initDate: Date.now() ,
       finishDate: Date.now(),
+      loadScreen: false,
+      loadScreenEdition: false,
+      success: false,
+      successEdit: false,
+      messageId: '',
+      id: ''
     }
 
-    // store.subscribe(() => {
-    //   console.log(store.getState().create_toggle_Sides)
-    //   if (store.getState().create_toggle_Sides === true) {
-    //     createToggle = 'CreateToggleRight'
-    //   }
-    // })
 
-    console.log('createToggle: ', createToggle)
+    store.subscribe( () => {
+
+      if (store.getState().create_toggle_Sides){
+        createToggle = 'CreateToggleRight'
+      }
+
+    })
   }
 
 
@@ -161,13 +173,178 @@ handleStartDateChange = date => {
     this.setState({ [name]: event.target.value});
 
     if (name === 'isEvent') {
-      auxOptions = (event.target.value === 'Service')? serviceCategories : eventCategories;
+      auxOptions = (event.target.value === 'Service') ? serviceCategories : eventCategories;
     }
   };
 
+  backtoMenu = () => {
+    console.log('back to menu');
+    createToggle = 'CreateToggleLeft'
+    document.getElementById('name').value = '';
+    document.getElementById('standard-full-width').value = '';
+
+
+
+    this.setState({
+      ...this.state,
+      cat: '',
+      location: '',
+      initDate: Date.now() ,
+      finishDate: Date.now(),
+      isEvent: '',
+      loadScreen: false,
+      loadScreenEdition: false,
+      successEdit: false,
+      success: false,
+      id: ''
+    })
+
+    store.dispatch({
+      type: 'CREATE-TOGGLE-LEFT'
+    })
+  }
+
   check = () => {
-    axios.post('https://runmapp-final.herokuapp.com/addEvents', this.state).then(res => {
-      alert(res.data)
+
+
+
+    if (this.state.id === ''){
+      alert('Create New Request')
+
+      this.setState({
+        ...this.state,
+        loadScreen: true
+      })
+
+      const state = this.state;
+
+      const createdEvent = {
+        name: state.name,
+        isEvent: state.isEvent,
+        cat: state.cat,
+        description: state.description,
+        location: state.location,
+        initDate: state.initDate ,
+        finishDate: state.finishDate,
+      }
+      console.log(createdEvent);
+      axios.post('https://runmapp-final.herokuapp.com/addEvents', createdEvent).then(res => {
+        console.log(res.data)
+        this.setState({
+          ...this.state,
+          success: true,
+          messageId: res.data
+        })
+
+        // prompt(res.data);
+        // this.backtoMenu()
+      })
+    }else if (this.state.id !== ''){
+      alert('Edit Request')
+      this.setState({
+        ...this.state,
+        loadScreenEdition: true
+      })
+      this.editRequest();
+    }
+
+
+  }
+
+  renderLoadScreen = () => {
+    if (this.state.loadScreen && !this.state.loadScreenEdition) {
+      return (
+        <div className='SuccessContainer'>
+          {
+            this.renderSuccessMessage()
+          }
+        </div>
+      )
+    }else if (this.state.loadScreenEdition && !this.state.loadScreen){
+      return (
+        <div className='SuccessContainer'>
+          {
+            this.renderSuccessMessageEdited()
+          }
+        </div>
+      )
+    }
+  }
+
+  renderSuccessMessage = () => {
+    if (this.state.success) {
+      return (
+        <div className='Success'>
+          <img className='CheckImg' src={checked}></img>
+          <h2>¡Evento Agregado!</h2>
+          <p>Guarda esta id para editar el evento:</p>
+          <p>{this.state.messageId}</p>
+          <div className='SucessIcon' onClick={this.backtoMenu}>Volver al Menu</div>
+        </div>
+      )
+    }else {
+      return (
+        <div className='LoadScreen'>
+          <div className="lds-hourglass"></div>
+          <h2>Agregando evento</h2>
+          <p>Solo danos un momento</p>
+        </div>
+      )
+    }
+  }
+
+  renderSuccessMessageEdited = () => {
+    if (this.state.successEdit) {
+      return (
+        <div className='Success'>
+          <img className='CheckImg' src={checked}></img>
+          <h2>¡Evento Editado!</h2>
+          <p>Puedes verlo en el mapa</p>
+          <div className='SucessIcon' onClick={this.backtoMenu}>Volver al Menu</div>
+        </div>
+      )
+    }else {
+      return (
+        <div className='LoadScreen'>
+          <div className="lds-hourglass"></div>
+          <h2>Editando evento</h2>
+          <p>Solo danos un momento</p>
+        </div>
+      )
+    }
+  }
+
+  editEvent = (e) => {
+    this.setState({
+      ...this.state,
+      id: e.target.value
+    })
+  }
+
+  editRequest = () => {
+
+    const state = this.state;
+
+    const editedEvent = {
+      name: state.name,
+      isEvent: state.isEvent,
+      cat: state.cat,
+      description: state.description,
+      location: state.location,
+      initDate: state.initDate ,
+      finishDate: state.finishDate,
+      id: state.id
+    }
+    console.log(editedEvent);
+    axios.post('https://runmapp-final.herokuapp.com/editEvents', editedEvent).then(res => {
+      console.log(res.data)
+      this.setState({
+        ...this.state,
+        successEdit: true
+      })
+
+      // prompt(res.data);
+      // this.backtoMenu()
     })
   }
 
@@ -176,15 +353,39 @@ handleStartDateChange = date => {
 
     return (
       <div className={`Form ${createToggle}`}>
+
+
+        {
+          this.renderLoadScreen()
+        }
+
+
+
+
       <header className="Form-header">
         <div className="Header">
           <h4>
             Añadir evento
           </h4>
         </div>
+
+        <div className='EditInterface'>
+          <p>Si necesitas editar un evento pon su id aquí: </p>
+          <div className='currentId'>
+            <TextField
+              id="currentId"
+
+              onChange={this.editEvent}
+              label="Id "
+              margin="normal"
+            />
+          </div>
+        </div>
+
         <div className="Content">
         <div className ="Wrapper">
             <TextField helperText="Dale un nombre a tu evento" id="name" onChange={this.handleChange('name')} label="Nombre "  type="name" autoComplete="current-name" margin="normal"/>
+
             <TextField
             id="isEvent"
             select
@@ -306,7 +507,7 @@ handleStartDateChange = date => {
       </header>
 
       <div className="ButtonsWrapper">
-            <div className="Btn cancel" >Cancelar</div>
+            <div className="Btn cancel" onClick={this.backtoMenu}>Cancelar</div>
             <div className="Btn send" onClick={this.check}>Enviar</div>
       </div>
     </div>

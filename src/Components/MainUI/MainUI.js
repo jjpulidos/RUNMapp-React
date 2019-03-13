@@ -25,24 +25,25 @@ class MainUI extends Component {
             ],
             toggle: '',
             toggleMenu: '',
-            hide: '',
+            initialClass: 'MainUIContainer',
             hide_element: ''
         }
         store.subscribe(() => {
             this.setState({
                 ...this.state,
-                hide: store.getState().overflow,
+                initialClass: store.getState().overflow,
                 toggleMenu: store.getState().toggle,
             })
         })
 
     }
-    componentDidMount() {
-        this.setState({
-            ...this.state,
-            hide: 'Hide',
-        })
-    }
+
+    // componentWillMount() {
+    //   this.setState({
+    //       ...this.state,
+    //       hide: 'Hide'
+    //   })
+    // }
 
     //Methods
     // componentWillMount() {
@@ -115,12 +116,12 @@ class MainUI extends Component {
             isEvent: true,
             initDate: Date.now() +1000000000 ,
             finishDate: Date.now() +10000000000000 ,
-            minRate: 1.0,
+            minRate: 0.0,
             maxRate: 100
         };
 
         axios.post('https://runmapp-final.herokuapp.com/getEvents', cat).then(res => {
-          console.log("Filtro Solicitado: ", requested)
+          console.log()
 
             store.dispatch({
                 type: 'PUSH-BUILD',
@@ -129,6 +130,7 @@ class MainUI extends Component {
                     events: res.data.events
                 }
             })
+
         })
 
 
@@ -142,7 +144,7 @@ class MainUI extends Component {
     render() {
 
         return (
-            <div className={`MainUIContainer ${this.state.hide} ${this.state.hide_element}`}>
+            <div className={`${this.state.initialClass}`}>
                 <div className='MenuContainer'>
                     <Map />
                     <div className='CategoriesMenuContainer'>
@@ -164,7 +166,7 @@ class MainUI extends Component {
 
                 <MainMenu/>
                 <Support />
-                // <Form />
+                <Form />
 
             </div>
         )

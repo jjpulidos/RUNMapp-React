@@ -1,5 +1,5 @@
 .MainSuppContainer {
-    height: 200vh;
+    height: 100vh;
     width: 100%;
     position: absolute;
     top: 0;
@@ -8,12 +8,12 @@
     background: white;
 }
 .Toggle_Right {
-    animation: ToggleRight 400ms forwards;
-    left: 0;
+    animation: ToggleRight 600ms forwards;
+
 }
 .Toggle_Left {
-    animation: ToggleLeft 400ms forwards;
-    right: 0;
+    animation: ToggleLeft 600ms forwards;
+
 }
 
 @keyframes ToggleLeft {
