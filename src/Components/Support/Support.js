@@ -116,12 +116,38 @@ class Support extends Component {
                         {
 
                             this.state.data.map(x => {
+
+                              switch (x.location) {
+                                case '5c549598573ea33fb2afb780': x.location = 'Escuela de Cine y Televisión' ; break;
+                                case '5c549598573ea33fb2afb776': x.location = 'Escuela de Medicina' ; break;
+                                case '5c549598573ea33fb2afb77e': x.location = 'Museo de Arte'; break;
+                                case '5c549598573ea33fb2afb774': x.location = 'Instituto de Extensión e Investigación'; break;
+                                case '5c549598573ea33fb2afb773': x.location = 'Edificio de Química'; break;
+                                case '5c549598573ea33fb2afb783': x.location = 'Biblioteca Central Gabriel García Márquez'; break;
+                                case '5c549598573ea33fb2afb77c': x.location = 'Edificio de Ciencias Agrarias'; break;
+                                case '5c549598573ea33fb2afb77f': x.location = 'Conservatorio de Musica'; break;
+                                case '5c549598573ea33fb2afb781': x.location = 'Edificio Orlando Fals Borda'; break;
+                                case '5c549598573ea33fb2afb784': x.location = 'Edificio de Ciencias'; break;
+                                case '5c549598573ea33fb2afb77a': x.location = 'Edificio Posgrados de Ciencias Humanas'; break;
+                                case '5c549598573ea33fb2afb77b': x.location = 'Edificio de Geociencias'; break;
+                                case '5c549598573ea33fb2afb782': x.location = 'Edificio de Ciencias Económicas'; break;
+                                case '5c549676573ea34015bf63ff': x.location = 'Edificio de Física, Estadistica y Matemáticas (FEM)'; break;
+                                case '5c549676573ea34015bf6400': x.location = 'Edificio de Enfermería'; break;
+                                case '5c54971f573ea34050326bca': x.location = 'Edifio veterinaria y zootecnia'; break;
+                                case '5c5498bc573ea3417c59c8b1': x.location = 'León de Greiff'; break;
+                                case '5c549933573ea341ac4bdf31': x.location = 'Edificio Ciencia y Tecnología (CyT)'; break;
+                                case '5c5499fe573ea34280f8b4ab': x.location = 'Edificio Insignia de Ingeniería'; break;
+                                case '5c5499fe573ea34280f8b4ac': x.location = 'Edificio Aulas de Ingeniería'; break;  
+                              }
+
+
+
                                 if (x.rate <= 33) {
                                     return  (
                                         <div className={'Square' } id={x._id} key={x._id}>
                                             <p className='Rate'> {x.rate} </p>
                                             <div className='Flex'>
-                                                <h4 className='Subtitle'> {x.name.split(' ')[0] + " " + x.name.split(' ')[1] + " " + x.name.split(' ')[2]} </h4>
+                                                <h4 className='Subtitle'> {x.name} </h4>
                                                 <p className='Location'> {x.location} </p>
                                             </div>
                                         </div>
@@ -131,7 +157,7 @@ class Support extends Component {
                                         <div className={'Square MidRate' } id={x._id} key={x._id}>
                                             <p className='RateMid'> {x.rate} </p>
                                             <div className='Flex'>
-                                                <h4 className='Subtitle'> {x.name.split(' ')[0] + " " + x.name.split(' ')[1] + " " + x.name.split(' ')[2]} </h4>
+                                                <h4 className='Subtitle'> {x.name} </h4>
                                                 <p className='Location'> {x.location} </p>
                                             </div>
                                         </div>
@@ -142,7 +168,7 @@ class Support extends Component {
                                         <div className={'Square HighRate' } id={x._id} key={x._id}>
                                             <p className='RateHigh'> {x.rate} </p>
                                             <div className='Flex'>
-                                                <h4 className='Subtitle'> {x.name.split(' ')[0] + " " + x.name.split(' ')[1] + " " + x.name.split(' ')[2]} </h4>
+                                                <h4 className='Subtitle'> {x.name} </h4>
                                                 <p className='Location'> {x.location} </p>
                                             </div>
                                         </div>
