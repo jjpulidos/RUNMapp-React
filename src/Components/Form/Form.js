@@ -369,145 +369,147 @@ handleStartDateChange = date => {
           </h4>
         </div>
 
-        <div className='EditInterface'>
-          <p>Si necesitas editar un evento pon su id aquí: </p>
-          <div className='currentId'>
-            <TextField
-              id="currentId"
-
-              onChange={this.editEvent}
-              label="Id "
-              margin="normal"
-            />
-          </div>
-        </div>
-
-        <div className="Content">
-        <div className ="Wrapper">
-          <br/>
-            <div className='Type'>
-              <TextField helperText="Dale un nombre a tu evento" id="name" onChange={this.handleChange('name')} label="Nombre "  type="name" autoComplete="current-name" margin="normal"/>
-
+        <div className='Padding_'>
+          <div className='EditInterface'>
+            <p>Si necesitas editar un evento pon su id aquí: </p>
+            <div className='currentId'>
               <TextField
-              id="isEvent"
-              select
-              label="Tipo"
-              className={classes.textField}
-              value={this.state.isEvent}
-              onChange={this.handleChange('isEvent')}
-              SelectProps={{
-                MenuProps: {
-                  className: classes.menu,
-                },
-              }}
-              helperText="Seleccione el tipo de evento"
-              margin="normal"
-            >
+                id="currentId"
 
-              {types.map(option => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
+                onChange={this.editEvent}
+                label="Id "
+                margin="normal"
+              />
+            </div>
           </div>
-        </div>
-        <div className="Wrapper Type2">
+
+          <div className="Content">
+          <div className ="Wrapper">
+            <br/>
+              <div className='Type'>
+                <TextField helperText="Dale un nombre a tu evento" id="name" onChange={this.handleChange('name')} label="Nombre "  type="name" autoComplete="current-name" margin="normal"/>
+
+                <TextField
+                id="isEvent"
+                select
+                label="Tipo"
+                className={classes.textField}
+                value={this.state.isEvent}
+                onChange={this.handleChange('isEvent')}
+                SelectProps={{
+                  MenuProps: {
+                    className: classes.menu,
+                  },
+                }}
+                helperText="Seleccione el tipo de evento"
+                margin="normal"
+              >
+
+                {types.map(option => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </div>
+          </div>
+          <div className="Wrapper Type2">
+            <TextField
+            id="cat"
+            select
+            label="Categoría"
+            className={classes.textField}
+            value={this.state.cat}
+            onChange={this.handleChange('cat')}
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu,
+              },
+            }}
+            helperText="Seleccione la categoria del evento"
+            margin="normal"
+          >
+            {auxOptions.map(option => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
           <TextField
           id="cat"
           select
-          label="Categoría"
+          label="Localización"
           className={classes.textField}
-          value={this.state.cat}
-          onChange={this.handleChange('cat')}
+          value={this.state.location}
+          onChange={this.handleChange('location')}
           SelectProps={{
             MenuProps: {
               className: classes.menu,
             },
           }}
-          helperText="Seleccione la categoria del evento"
+          helperText="Selecciona un edificio para ubicar tu evento"
           margin="normal"
         >
-          {auxOptions.map(option => (
+          {locations.map(option => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))}
         </TextField>
+          </div>
+          <div className="Wrapper-I">
         <TextField
-        id="cat"
-        select
-        label="Localización"
-        className={classes.textField}
-        value={this.state.location}
-        onChange={this.handleChange('location')}
-        SelectProps={{
-          MenuProps: {
-            className: classes.menu,
-          },
-        }}
-        helperText="Selecciona un edificio para ubicar tu evento"
-        margin="normal"
-      >
-        {locations.map(option => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField>
-        </div>
-        <div className="Wrapper-I">
-      <TextField
-          id="standard-full-width"
-          onChange={this.handleChange('description')}
-          label="Descripción"
-          style={{ margin: 8 }}
-          placeholder="Cuentanos de tu evento"
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        </div>
-        <div className="Type3">
+            id="standard-full-width"
+            onChange={this.handleChange('description')}
+            label="Descripción"
+            style={{ margin: 8 }}
+            placeholder="Cuentanos de tu evento"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          </div>
+          <div className="Type3">
+            <div className="Wrapper">
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Grid container className={classes.grid} justify="space-around">
+                  <DatePicker
+                    margin="normal"
+                    label="Fecha de inicio"
+                    value={this.state.initDate}
+                    onChange={this.handleStartDateChange}
+                  />
+                  <TimePicker
+                    margin="normal"
+                    label="Hora de inicio"
+                    value={this.state.initDate}
+                    onChange={this.handleStartDateChange}
+                  />
+                </Grid>
+            </MuiPickersUtilsProvider>
+          </div>
           <div className="Wrapper">
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <Grid container className={classes.grid} justify="space-around">
                 <DatePicker
                   margin="normal"
-                  label="Fecha de inicio"
-                  value={this.state.initDate}
-                  onChange={this.handleStartDateChange}
+                  label="Fecha de finalización"
+                  value={this.state.finishDate}
+                  onChange={this.handleEndDateChange}
                 />
                 <TimePicker
                   margin="normal"
-                  label="Hora de inicio"
-                  value={this.state.initDate}
-                  onChange={this.handleStartDateChange}
+                  label="Hora de finalización"
+                  value={this.state.finishDate}
+                  onChange={this.handleEndDateChange}
                 />
               </Grid>
           </MuiPickersUtilsProvider>
         </div>
-        <div className="Wrapper">
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <Grid container className={classes.grid} justify="space-around">
-              <DatePicker
-                margin="normal"
-                label="Fecha de finalización"
-                value={this.state.finishDate}
-                onChange={this.handleEndDateChange}
-              />
-              <TimePicker
-                margin="normal"
-                label="Hora de finalización"
-                value={this.state.finishDate}
-                onChange={this.handleEndDateChange}
-              />
-            </Grid>
-        </MuiPickersUtilsProvider>
       </div>
-    </div>
+          </div>
         </div>
 
       </header>
