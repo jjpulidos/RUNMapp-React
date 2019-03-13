@@ -1,9 +1,35 @@
 .Form {
   text-align: center;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  transform: translateX(-150%);
 }
 
+.CreateToggleRight {
+    animation: ToggleRight_ 400ms forwards;
+
+}
+.CreateToggleLeft {
+    animation: ToggleLeft_ 400ms forwards;
+
+}
+
+@keyframes ToggleRight_ {
+    from { transform: translateX(-150%) }
+    to { transform: translateX(0) }
+}
+
+@keyframes ToggleLeft_ {
+    from { transform: translateX(0) }
+    to { transform: translateX(-150%) }
+}
+
+
+
 .Header {
-  background-color: #FC8472;
+  background-color: #ec604b;
   width: 100%;
   height: 13vmin;
   justify-content: center;

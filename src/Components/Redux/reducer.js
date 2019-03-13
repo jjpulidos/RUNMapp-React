@@ -50,8 +50,12 @@ function reducer(state, action) {
           events: current_data
         }
       }
-      // case 'CAN-TOGGLE-ON': return {...state, canToggle: true}
-      // case 'CAN-TOGGLE-OFF': return {...state, canToggle: true}
+
+
+      case 'CREATE-TOGGLE-RIGHT': {
+        console.log('Create to right')
+        return {...state, create_toggle_Sides: true}
+      }
 
       default: return state;
     }

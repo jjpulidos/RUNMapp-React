@@ -9,6 +9,7 @@ import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pic
 import DateFnsUtils from '@date-io/date-fns';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios'
+import store from '../Redux/Redux'
 
 
 // import { DatetimeInput } from 'react-datetime-inputs'
@@ -116,10 +117,13 @@ const locations = [
 
 var auxOptions = eventCategories;
 
+var createToggle = ''
 
 class Form extends Component {
 
-  state = {
+  constructor(props){
+    super(props);
+    this.state = {
       name: '',
       isEvent: '',
       cat: '',
@@ -127,26 +131,18 @@ class Form extends Component {
       location: '',
       initDate: Date.now() ,
       finishDate: Date.now(),
+    }
+
+    // store.subscribe(() => {
+    //   console.log(store.getState().create_toggle_Sides)
+    //   if (store.getState().create_toggle_Sides === true) {
+    //     createToggle = 'CreateToggleRight'
+    //   }
+    // })
+
+    console.log('createToggle: ', createToggle)
   }
 
-// changeState = () => {
-//   this.setState({
-//     event: {
-//       ...this.state.event,
-//       name: document.getElementById('name').value,
-//       type: document.getElementById('type').value,
-//       cat: document.getElementById('cat').value
-//     }
-//   })
-// }
-
-// handleChange = name => event => {
-//   console.log(event.target.value);
-//
-//   this.setState({
-//     ...this.state.event,
-//     [name]: event.target.value });
-// };
 
 handleStartDateChange = date => {
   console.log(date)
@@ -170,7 +166,7 @@ handleStartDateChange = date => {
   };
 
   check = () => {
-    axios.post('http://runmapp-final.herokuapp.com/addEvents', this.state).then(res => {
+    axios.post('https://runmapp-final.herokuapp.com/addEvents', this.state).then(res => {
       alert(res.data)
     })
   }
@@ -179,7 +175,7 @@ handleStartDateChange = date => {
     const { classes } = this.props;
 
     return (
-      <div className="Form">
+      <div className={`Form ${createToggle}`}>
       <header className="Form-header">
         <div className="Header">
           <h4>

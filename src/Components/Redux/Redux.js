@@ -14,7 +14,7 @@ const initialState = {
     toggle_UpDown: false,
     toggle_Sides: false,
 
-
+    create_toggle_Sides: false,
     renderOption: undefined,
 
     buildings: [],

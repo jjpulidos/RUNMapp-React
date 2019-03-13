@@ -10,6 +10,7 @@ import axios from 'axios'
 import store from "../Redux/Redux";
 import Support from '../Support/Support'
 import Map from '../Map/Map'
+import Form from '../Form/Form'
 
 class MainUI extends Component {
     constructor(props){
@@ -163,6 +164,7 @@ class MainUI extends Component {
 
                 <MainMenu/>
                 <Support />
+                // <Form />
 
             </div>
         )

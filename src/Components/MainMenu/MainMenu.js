@@ -54,10 +54,16 @@ class MainMenu extends Component {
         })
     }
 
-    toggleSide = () => {
-        store.dispatch({
-            type: 'TOGGLE-LEFT'
-        })
+    toggleSide = (e) => {
+        if (e.target.getAttribute('id') === 'support'){
+          store.dispatch({
+              type: 'TOGGLE-LEFT'
+          })
+        }else if (e.target.getAttribute('id') === 'create'){
+          store.dispatch({
+            type: 'CREATE-TOGGLE-RIGHT'
+          })
+        }
     }
     // toggleSideClose = () => {
     //     store.dispatch({
@@ -92,13 +98,13 @@ class MainMenu extends Component {
                 </ul>
 
                 <div className='CreateSupportContainer'>
-                    <div className='NewEventContainer' >
+                    <div className='NewEventContainer' id='create'  onClick={this.toggleSide}>
                         <img className='NewEvent_Icon' src={add} alt="add_icon"/>
-                        <h3>Crear nuevo Evento</h3>
+                        <h3 >Crear/Editar Evento</h3>
                     </div>
 
-                    <div className='SupportEventContainer' onClick={this.toggleSide}>
-                        <h3>Apoyar un Evento</h3>
+                    <div className='SupportEventContainer' id='support' onClick={this.toggleSide}>
+                        <h3 >Apoyar un Evento</h3>
                         <img className='SupportEvent_Icon' src={like} alt="like_icon"/>
                     </div>
                 </div>
