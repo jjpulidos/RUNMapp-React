@@ -119,7 +119,7 @@ class MainUI extends Component {
         };
 
         axios.post('https://runmapp-final.herokuapp.com/getEvents', cat).then(res => {
-          // console.log(res.data)
+          console.log("Filtro Solicitado: ", requested)
 
             store.dispatch({
                 type: 'PUSH-BUILD',

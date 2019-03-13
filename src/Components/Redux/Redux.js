@@ -7,7 +7,7 @@ const initialState = {
     data: [],
     toggle: '',
     toggleSide: '',
-    overflow: 'Hide',
+    overflow: '',
     toggle2: '',
     canToggle: false,
 

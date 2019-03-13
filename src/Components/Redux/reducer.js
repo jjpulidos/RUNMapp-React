@@ -17,7 +17,7 @@ function reducer(state, action) {
       case 'TOGGLE-DOWN': return { ...state, toggle_UpDown: false }; break;
 
 
-      case 'TOGGLE-LEFT': return { ...state, toggle_Sides: true } ; break;
+      case 'TOGGLE-LEFT': return { ...state, toggle_Sides: true, overflow: '' } ; break;
       // case 'TOGGLE-LEFT-CLOSE': return { ...state, toggleSide: 'Toggle_Left', overflow: '', toggle: 'HideElement', canToggle: false} ; break;
       // case 'TOGGLE-LEFT-POPULAR': return { ...state, toggleSide: 'Toggle_Left', overflow: '', toggle: 'HideElement', canToggle: false} ; break;
       // case 'TOGGLE-LEFT-SERVICE': return { ...state, toggleSide: 'Toggle_Left', overflow: '', toggle: 'HideElement', canToggle: false} ; break;

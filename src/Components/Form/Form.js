@@ -46,15 +46,15 @@ const types = [
 
 const eventCategories = [
 {
-  value: 'Sport',
+  value: 'Sports',
   label: 'Deporte',
 },
 {
-  value: 'Academics',
+  value: 'Academic',
   label: 'Académico',
 },
 {
-  value: 'Cultural',
+  value: 'Culture',
   label: 'Cultural',
 },
 ];
@@ -65,7 +65,7 @@ const serviceCategories = [
   label: 'Administrativo',
 },
 {
-  value: 'Academics',
+  value: 'Academic',
   label: 'Académico',
 }
 ];
@@ -170,7 +170,7 @@ handleStartDateChange = date => {
   };
 
   check = () => {
-    axios.post('http://192.168.1.118:5000/addEvents', this.state).then(res => {
+    axios.post('http://runmapp-final.herokuapp.com/addEvents', this.state).then(res => {
       console.log(res.data)
     })
   }

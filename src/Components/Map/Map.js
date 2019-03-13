@@ -25,21 +25,35 @@ class Map extends Component {
 
             ],
 
-            _render: false
+            _render: true
 
         }
 
         store.subscribe(() => {
-
-          console.log('se han añadido builidings')
+            console.log('__CANTIDAD DE BUILDINGS TRAIDAS__: ', store.getState().buildings.length)
           this.setState({
               ...this.state,
               arrayBuildingsSelected: store.getState().buildings
           })
-
           this.setGeoJason()
 
+          // let len = this.state.arrayBuildingsSelected.length;
 
+          // if (len > 0) {this.setGeoJason()} else {this.setState({geojson: { ...this.state.geojson, features: []}, arrayBuildingsSelected: []})}
+          // if (len > 0) {
+          //   this.setGeoJason()
+          // }else {
+          //   this.setState({
+          //     ...this.state,
+          //     geojson: {
+          //       ...this.state.geojson,
+          //       features: []
+          //     },
+          //     arrayBuildingsSelected: []
+          //   })
+          // }
+
+        setTimeout(() => console.log('__CANTIDAD DE BUILDINGS SETEADAS__: ', this.state.arrayBuildingsSelected.length), 1000)
 
 
 
@@ -51,8 +65,9 @@ class Map extends Component {
 
     setGeoJason = () => {
       // console.log('Actualizando el geojson')
+      let buildings = []
       this.state.arrayBuildingsSelected.map((building, i) => {
-          this.state.geojson.features.push({
+          buildings.push({
               type: 'Feature',
               geometry: {
                   type: 'Point',
@@ -69,6 +84,14 @@ class Map extends Component {
               // console.log('Iteracion final')
           }
       });
+
+      this.setState({
+        ...this.state,
+        geojson: {
+          ...this.state.geojson,
+          features: buildings
+        }
+      })
     }
 
     onLoaded(map) {
@@ -167,16 +190,18 @@ class Map extends Component {
 
                     {
                         this.state.geojson.features.map( feature => {
-                            if (this.state._render) {
-                                return (
-                                    <div onClick={this.markerRequest} key={Math.random()*10000} >
-                                        <Marker coordinates={feature.geometry.coordinates} >
-                                            <img src={icon} width={30} height={30} alt="" id={feature.properties._id}/>
-                                        </Marker>
-                                    </div>
+                          console.log(this.state.geojson.features.length)
 
-                                )
-                            }
+                          if (this.state._render){
+                            return (
+                                <div onClick={this.markerRequest} key={Math.random()*10000} >
+                                    <Marker coordinates={feature.geometry.coordinates} >
+                                        <img src={icon} width={30} height={30} alt="" id={feature.properties._id}/>
+                                    </Marker>
+                                </div>
+
+                            )
+                          }
                         })
                     }
 

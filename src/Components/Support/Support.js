@@ -42,7 +42,7 @@ class Support extends Component {
               data: store.getState().events,
               toggle_Side: toggleSideDirection
           })
-          setTimeout(() => console.log('Support Data: ', this.state.data), 1000)
+          // setTimeout(() => console.log('Support Data: ', this.state.data), 1000)
         })
     }
 
