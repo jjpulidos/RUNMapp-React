@@ -384,31 +384,35 @@ handleStartDateChange = date => {
 
         <div className="Content">
         <div className ="Wrapper">
-            <TextField helperText="Dale un nombre a tu evento" id="name" onChange={this.handleChange('name')} label="Nombre "  type="name" autoComplete="current-name" margin="normal"/>
+          <br/>
+            <div className='Type'>
+              <TextField helperText="Dale un nombre a tu evento" id="name" onChange={this.handleChange('name')} label="Nombre "  type="name" autoComplete="current-name" margin="normal"/>
 
-            <TextField
-            id="isEvent"
-            select
-            label="Tipo"
-            className={classes.textField}
-            value={this.state.isEvent}
-            onChange={this.handleChange('isEvent')}
-            SelectProps={{
-              MenuProps: {
-                className: classes.menu,
-              },
-            }}
-            helperText="Seleccione el tipo de evento"
-            margin="normal"
-          >
-            {types.map(option => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
+              <TextField
+              id="isEvent"
+              select
+              label="Tipo"
+              className={classes.textField}
+              value={this.state.isEvent}
+              onChange={this.handleChange('isEvent')}
+              SelectProps={{
+                MenuProps: {
+                  className: classes.menu,
+                },
+              }}
+              helperText="Seleccione el tipo de evento"
+              margin="normal"
+            >
+
+              {types.map(option => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+          </div>
         </div>
-        <div className="Wrapper">
+        <div className="Wrapper Type2">
           <TextField
           id="cat"
           select
@@ -466,41 +470,43 @@ handleStartDateChange = date => {
           }}
         />
         </div>
+        <div className="Type3">
+          <div className="Wrapper">
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <Grid container className={classes.grid} justify="space-around">
+                <DatePicker
+                  margin="normal"
+                  label="Fecha de inicio"
+                  value={this.state.initDate}
+                  onChange={this.handleStartDateChange}
+                />
+                <TimePicker
+                  margin="normal"
+                  label="Hora de inicio"
+                  value={this.state.initDate}
+                  onChange={this.handleStartDateChange}
+                />
+              </Grid>
+          </MuiPickersUtilsProvider>
+        </div>
         <div className="Wrapper">
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Grid container className={classes.grid} justify="space-around">
               <DatePicker
                 margin="normal"
-                label="Fecha de inicio"
-                value={this.state.initDate}
-                onChange={this.handleStartDateChange}
+                label="Fecha de finalización"
+                value={this.state.finishDate}
+                onChange={this.handleEndDateChange}
               />
               <TimePicker
                 margin="normal"
-                label="Hora de inicio"
-                value={this.state.initDate}
-                onChange={this.handleStartDateChange}
+                label="Hora de finalización"
+                value={this.state.finishDate}
+                onChange={this.handleEndDateChange}
               />
             </Grid>
         </MuiPickersUtilsProvider>
       </div>
-      <div className="Wrapper">
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <Grid container className={classes.grid} justify="space-around">
-            <DatePicker
-              margin="normal"
-              label="Fecha de finalización"
-              value={this.state.finishDate}
-              onChange={this.handleEndDateChange}
-            />
-            <TimePicker
-              margin="normal"
-              label="Hora de finalización"
-              value={this.state.finishDate}
-              onChange={this.handleEndDateChange}
-            />
-          </Grid>
-      </MuiPickersUtilsProvider>
     </div>
         </div>
 

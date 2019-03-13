@@ -1,38 +1,40 @@
-[debug] [2019-03-13T08:05:19.208Z] ----------------------------------------------------------------------
-[debug] [2019-03-13T08:05:19.219Z] Command:       /usr/bin/node /usr/local/bin/firebase deploy
-[debug] [2019-03-13T08:05:19.221Z] CLI Version:   6.5.0
-[debug] [2019-03-13T08:05:19.221Z] Platform:      linux
-[debug] [2019-03-13T08:05:19.221Z] Node Version:  v8.10.0
-[debug] [2019-03-13T08:05:19.222Z] Time:          Wed Mar 13 2019 03:05:19 GMT-0500 (-05)
-[debug] [2019-03-13T08:05:19.222Z] ----------------------------------------------------------------------
+[debug] [2019-03-13T08:35:49.493Z] ----------------------------------------------------------------------
+[debug] [2019-03-13T08:35:49.500Z] Command:       /usr/bin/node /usr/local/bin/firebase init
+[debug] [2019-03-13T08:35:49.500Z] CLI Version:   6.5.0
+[debug] [2019-03-13T08:35:49.500Z] Platform:      linux
+[debug] [2019-03-13T08:35:49.501Z] Node Version:  v8.10.0
+[debug] [2019-03-13T08:35:49.501Z] Time:          Wed Mar 13 2019 03:35:49 GMT-0500 (-05)
+[debug] [2019-03-13T08:35:49.501Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2019-03-13T08:05:19.271Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2019-03-13T08:05:19.273Z] > authorizing via signed-in user
-[debug] [2019-03-13T08:05:19.274Z] [iam] checking project unmapp-217106 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2019-03-13T08:05:19.282Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2019-03-13T08:05:19.283Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- <request body omitted>
-[debug] [2019-03-13T08:05:19.857Z] <<< HTTP RESPONSE 200
-[debug] [2019-03-13T08:05:19.918Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/unmapp-217106:testIamPermissions  
-
-[debug] [2019-03-13T08:05:20.535Z] <<< HTTP RESPONSE 200
-[debug] [2019-03-13T08:05:20.540Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/unmapp-217106  
- 
-[debug] [2019-03-13T08:05:21.235Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-13T08:35:49.521Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-03-13T08:35:49.522Z] > authorizing via signed-in user
 [info] 
-[info] === Deploying to 'unmapp-217106'...
-[info] 
-[info] i  deploying hosting
-[debug] [2019-03-13T08:05:21.263Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/unmapp-217106/versions  
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
 
-[debug] [2019-03-13T08:05:22.584Z] <<< HTTP RESPONSE 200
-[info] i  hosting[unmapp-217106]: beginning deploy...
-[info] i  hosting[unmapp-217106]: found 34 files in dist
-[debug] [2019-03-13T08:05:22.688Z] [hosting] hash cache [ZGlzdA] load error: lines is not defined
-[debug] [2019-03-13T08:05:24.433Z] [hosting] hash cache [ZGlzdA] stored for 34 files
-[debug] [2019-03-13T08:05:24.437Z] [hosting][hash queue][FINAL]
-[debug] [2019-03-13T08:05:24.438Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/unmapp-217106/versions/3039e8e18d232503:populateFiles  
- <request body omitted>
-[debug] [2019-03-13T08:05:27.551Z] <<< HTTP RESPONSE 200
-[debug] [2019-03-13T08:05:27.592Z] [hosting][populate queue][FINAL]
-[debug] [2019-03-13T08:05:27.594Z] [hosting] uploads queued: 11
+You're about to initialize a Firebase project in this directory:
+
+  /home/mcrunny/Desktop/Develop/Projects/React/RUNMapp-Frontend/RUNMapp-Frontend
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, skipping
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 

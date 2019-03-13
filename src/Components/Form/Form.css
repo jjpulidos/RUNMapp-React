@@ -200,18 +200,31 @@
 
 
 .EditInterface {
-  width: 96%;
+  width: 100%;
   position: absolute;
-  top: 12%;
+  top: 11%;
   left: 2%;
   font-size: .85em;
-  display: flex;
+
 }
 .EditInterface p {
-  text-align: left;
+  text-align: center;
 }
 .currentId {
-  position: absolute;
-  right: 0;
-  top: -80%;
+  margin-top: -9%;
+}
+.Type {
+  margin-top: 1em;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.Type2 {
+  margin-top: -1em;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.Type3 {
+  margin-top: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
