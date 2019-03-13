@@ -39,7 +39,11 @@
 }
 
 .Init-button {
-  color:  #ED7B31;
+  color:  white;
+  background: rgb(0, 203, 172);
+  padding: .5em;
+  box-shadow: 0 1px 8px black;
+  border-radius: 10px;
   font-weight: 100;
   margin-top: 2em;
 }

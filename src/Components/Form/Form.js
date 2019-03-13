@@ -171,14 +171,15 @@ handleStartDateChange = date => {
 
   check = () => {
     axios.post('http://runmapp-final.herokuapp.com/addEvents', this.state).then(res => {
-      console.log(res.data)
+      alert(res.data)
     })
   }
 
   render() {
     const { classes } = this.props;
 
-    return (<div className="Form">
+    return (
+      <div className="Form">
       <header className="Form-header">
         <div className="Header">
           <h4>
@@ -305,12 +306,16 @@ handleStartDateChange = date => {
       </MuiPickersUtilsProvider>
     </div>
         </div>
-        <div className="Buttons-wrapper">
-              <div className="Feature-buttons" >Cancelar</div>
-              <div className="Feature-buttons" onClick={this.check}>Enviar</div>
-        </div>
+
       </header>
-    </div>);
+
+      <div className="ButtonsWrapper">
+            <div className="Btn cancel" >Cancelar</div>
+            <div className="Btn send" onClick={this.check}>Enviar</div>
+      </div>
+    </div>
+
+  );
   }
 }
 

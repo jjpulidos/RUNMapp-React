@@ -39,6 +39,24 @@
 
 }
 
+.ButtonsWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.Btn {
+  width: 30%;
+  background: tomato;
+  color: white;
+  line-height: 3em;
+  margin-bottom: 2em;
+  box-shadow: 0 1px 5px black;
+  border-radius: 10px;
+}
+.cancel {
+
+}
+
 .MuiFormControl-root-5 {
   width : auto !important;
 }
