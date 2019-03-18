@@ -2,8 +2,8 @@
 
 **in Progress...**
 
-Backend Part of RUNMapp deployed on heroku and connected
-with RUNMapp-React Repository deployed on Firebase
+Frontend Part of RUNMapp deployed on Firebase and connected
+with RUNMapp-Flask Repository deployed on Heroku
 
 [Link to App!](https://unmapp-217106.firebaseapp.com)
 
